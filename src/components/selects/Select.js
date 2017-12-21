@@ -49,7 +49,10 @@ export default {
       default: () => []
     },
     filter: Function,
-    customBlur: Function,
+    customBlur: {
+      type: Function,
+      default: () => null
+    },
     itemText: {
       type: String,
       default: 'text'
