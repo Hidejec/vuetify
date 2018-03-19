@@ -15,7 +15,12 @@ export default {
       })
     },
     onKeyDown (e) {
-      this.$refs.menu.changeListIndex(e)
+      if(e.key == 'Enter'){
+        this.customBlur();
+        this.isActive = false;
+        return;
+      }
+      this.$refs.menu.changeListIndex(e);
     }
   }
 }
