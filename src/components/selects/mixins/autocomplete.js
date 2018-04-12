@@ -11,7 +11,10 @@ export default {
         const text = this.getText(i)
         if (typeof text === 'undefined') return false
 
-        return text.toLowerCase().indexOf(this.searchValue.toLowerCase()) !== -1
+        if(this.isTimezone){
+          return text.toLowerCase().indexOf(this.searchValue.toLowerCase()) !== -1
+        } 
+        return text.toLowerCase().indexOf(this.searchValue.toLowerCase()) === 0
       })
     },
     onKeyDown (e) {

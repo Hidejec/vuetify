@@ -53,6 +53,7 @@ export default {
       type: Function,
       default: () => null
     },
+    isTimezone: Boolean,
     itemText: {
       type: String,
       default: 'text'
