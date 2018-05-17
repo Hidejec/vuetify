@@ -105,6 +105,10 @@ export default {
       type: Boolean,
       default: true
     },
+    contentClass: {
+      type: String,
+      default: ''
+    },
     activator: {
       default: null
     },

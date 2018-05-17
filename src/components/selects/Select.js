@@ -40,6 +40,14 @@ export default {
     bottom: Boolean,
     chips: Boolean,
     close: Boolean,
+    contentClass: {
+      type: String,
+      default: ''
+    },
+    customBlur: {
+      type: Function,
+      default: () => null
+    },
     debounce: {
       type: Number,
       default: 200
@@ -49,10 +57,6 @@ export default {
       default: () => []
     },
     filter: Function,
-    customBlur: {
-      type: Function,
-      default: () => null
-    },
     isTimezone: Boolean,
     itemText: {
       type: String,
@@ -98,7 +102,7 @@ export default {
         this.isDropdown ? 'menu__content--dropdown' : ''
       ]
 
-      return children.join(' ')
+      return `${children.join(' ')} ${this.contentClass}`
     },
     filteredItems () {
       const items = this.autocomplete && this.searchValue
