@@ -57,6 +57,10 @@ export default {
       default: () => []
     },
     filter: Function,
+    hasCustomFilter: {
+      type: Boolean,
+      default: false
+    },
     isTimezone: Boolean,
     itemText: {
       type: String,
@@ -152,7 +156,8 @@ export default {
         this.content && this.content.addEventListener('scroll', this.onScroll, false)
       })
     },
-    searchValue () {
+    searchValue (val) {
+      this.$emit('searchInput', val)
       this.$refs.menu.listIndex = -1
     }
   },

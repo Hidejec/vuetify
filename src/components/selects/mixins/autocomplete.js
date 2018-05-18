@@ -7,6 +7,9 @@ export default {
 
   methods: {
     filterSearch () {
+      if(this.hasCustomFilter){
+        return this.items;
+      }
       return this.items.filter(i => {
         const text = this.getText(i)
         if (typeof text === 'undefined') return false
