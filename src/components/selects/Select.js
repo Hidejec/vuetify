@@ -48,6 +48,10 @@ export default {
       type: Function,
       default: () => null
     },
+    customFilter: {
+      type: Array,
+      default: () => []
+    },
     debounce: {
       type: Number,
       default: 200
@@ -56,7 +60,10 @@ export default {
       type: Array,
       default: () => []
     },
-    filter: Function,
+    filter: {
+      type: Function,
+      default: () => null
+    },
     hasCustomFilter: {
       type: Boolean,
       default: false
@@ -174,7 +181,7 @@ export default {
 
   methods: {
     blur () {
-      this.customBlur();
+      this.customBlur()
       this.$nextTick(() => {
         this.focused = false
         this.searchValue = null
@@ -187,7 +194,7 @@ export default {
         (this.autocomplete) &&
         this.$refs.input.focus()
 
-      /*if (this.editable &&
+      /* if (this.editable &&
           this.inputValue !== null &&
           typeof this.inputValue !== 'undefined'
         ) {
@@ -237,6 +244,7 @@ export default {
 
       if (this.autocomplete || this.editable) {
         this.$nextTick(() => {
+          this.$emit('searchInput', '')
           this.searchValue = null
           this.$refs.input &&
             this.$refs.input.focus()
@@ -254,8 +262,8 @@ export default {
     ], {
       ref: 'activator',
       directives: [{
-          name: 'click-outside',
-          value: () => (this.isActive = false)
+        name: 'click-outside',
+        value: () => (this.isActive = false)
       }],
       on: {
         keydown: this.onKeyDown // Located in mixins/autocomplete.js
